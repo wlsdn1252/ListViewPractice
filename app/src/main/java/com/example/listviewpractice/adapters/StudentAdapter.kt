@@ -30,16 +30,18 @@ class StudentAdapter(
 
         val studentData = mList[position]   // 리스트의 해당 줄의 인덱스 번호를 담는다.
 
+
         val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
         val birthYearTxt = row.findViewById<TextView>(R.id.birthYearTxt)
 
         nameTxt.text = studentData.name
         
         // 출생년도를 가지고 나이(2023년 기준)로 변환
-        val koreaAge = 2023 - studentData.birthYear + 1
+        //val koreaAge = 2023 - studentData.birthYear + 1
+
         
         //birthYearTxt.text = "(${studentData.birthYear}년생)"
-        birthYearTxt.text = "(${koreaAge}세)"
+        birthYearTxt.text = "(${studentData.getMyAgeIn2023()}세)"
 
         return row
 
