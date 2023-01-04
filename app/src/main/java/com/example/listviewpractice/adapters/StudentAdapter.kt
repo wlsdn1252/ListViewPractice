@@ -21,12 +21,14 @@ class StudentAdapter(
 
         var tempRow = convertView
         if(tempRow == null){
+            // 해당줄에 리스트가 없으면 inflate하라(inflate : 코드의 재사용성?? 화면에 너무 많은 객체가 있으면 OOM(Out Of Memory)이 발생) 어플이 죽어버림
+            // 이를 방지하기 위해 inflate 화면밖에 나간 리스트는 재사용을 위해 다시 화면 제일 윗(밑)줄로 돌아온다.
             tempRow = inf.inflate(R.layout.student_list_item, null)
         }
 
         val row = tempRow!!
 
-        val studentData = mList[position]
+        val studentData = mList[position]   // 리스트의 해당 줄의 인덱스 번호를 담는다.
 
         val nameTxt = row.findViewById<TextView>(R.id.nameTxt)
         val birthYearTxt = row.findViewById<TextView>(R.id.birthYearTxt)
