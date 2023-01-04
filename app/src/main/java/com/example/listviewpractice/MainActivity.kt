@@ -38,8 +38,14 @@ class MainActivity : AppCompatActivity() {
         // 리스트뷰의 한줄을 길게 클릭할 떄
         studentListView.setOnItemLongClickListener { parent, view, position, id ->
             
-            val longClickedStudent = mStudentList[position]
-            Toast.makeText(this, "${longClickedStudent.name} 길게 클릭됨", Toast.LENGTH_SHORT).show()
+//            val longClickedStudent = mStudentList[position]
+//            Toast.makeText(this, "${longClickedStudent.name} 길게 클릭됨", Toast.LENGTH_SHORT).show()
+
+            // 목록에서 제거
+            mStudentList.removeAt(position)
+            // 리스트뷰의 내용이 변경되면 새롭게 반영해달라
+            mAdapter.notifyDataSetChanged()
+
             return@setOnItemLongClickListener true
 
         }
